@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplikasi Kasir</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="kasir.css">
+
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+    <h1>🧾 Aplikasi Kasir</h1>
+    <button onclick="toggleDarkMode()">🌙 Dark Mode</button>
+</header>
+
+<hr>
+
+<!-- ================= DASHBOARD ================= -->
+<section>
+    <h2>📊 Dashboard</h2>
+    <p>Total Transaksi: <b><span id="dTransaksi">0</span></b></p>
+    <p>Total Pendapatan: Rp <b><span id="dPendapatan">0</span></b></p>
+</section>
+
+<hr>
+
+<!-- ================= STRUK SETTING ================= -->
+<section>
+    <h2>🧾 Pengaturan Struk</h2>
+
+    <input id="strukNama" placeholder="Nama Toko">
+    <input id="strukAlamat" placeholder="Alamat Toko">
+    <input id="strukFooter" placeholder="Footer Struk">
+
+    <label>
+        <input type="checkbox" id="strukShowDiskon" checked>
+        Tampilkan Diskon
+    </label>
+
+    <br><br>
+    <button onclick="simpanStruk()">💾 Simpan Struk</button>
+</section>
+
+<hr>
+
+<!-- ================= POS ================= -->
+<div class="pos-layout">
+
+<!-- ===== DATA BARANG ===== -->
+<section>
+    <h2>📦 Data Barang</h2>
+
+    <input id="namaBarang" placeholder="Nama Barang">
+    <input id="hargaBarang" type="number" placeholder="Harga">
+    <input id="stokBarang" type="number" placeholder="Stok">
+    <button onclick="tambahBarang()">Tambah Barang</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Harga</th>
+                <th>Stok</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody id="tabelBarang"></tbody>
+    </table>
+</section>
+
+<!-- ===== KASIR ===== -->
+<section>
+    <h2>🛒 Kasir</h2>
+
+    <select id="pilihBarang">
+        <option value="">Pilih Barang</option>
+    </select>
+
+    <input id="hargaKasir" placeholder="Harga" disabled>
+    <input id="qtyKasir" type="number" placeholder="Qty">
+
+    <button onclick="tambahKasir()">Tambah</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Barang</th>
+                <th>Harga</th>
+                <th>Qty</th>
+                <th>Subtotal</th>
+                <th>X</th>
+            </tr>
+        </thead>
+        <tbody id="tabelKasir"></tbody>
+    </table>
+
+    <h3>Total: Rp <span id="totalKasir">0</span></h3>
+
+    <hr>
+
+    <!-- ===== PEMBAYARAN ===== -->
+    <h2>💳 Pembayaran</h2>
+
+    <input id="diskon" type="number" placeholder="Diskon (%)" oninput="hitungKembalian()">
+    <input id="uangBayar" type="number" placeholder="Uang Bayar" oninput="hitungKembalian()">
+    <input id="kembalian" placeholder="Kembalian" disabled>
+
+    <button onclick="selesaiTransaksi()">✅ Selesai Transaksi</button>
+</section>
+
+</div>
+
+<hr>
+
+<!-- ================= JAM ================= -->
+<p>🕒 <span id="jamRealtime"></span></p>
+
+<!-- ================= JS ================= -->
+<script src="kasir.js"></script>
+
+</body>
+</html>
+<section>
+    <h2>📜 Riwayat Transaksi</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="tabelRiwayat"></tbody>
+    </table>
+</section>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div style="overflow-x:auto">
+    <table>...</table>
+</div>
+<button onclick="printBluetooth()">🖨️ Print Bluetooth</button>
